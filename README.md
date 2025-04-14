@@ -1,9 +1,10 @@
-MemoTag: Voice-Based Cognitive Decline Detection (Proof of Concept)
-This project analyzes voice recordings to detect early signs of cognitive stress or decline using a combination of audio processing, natural language features, and anomaly detection models.
+ Voice-Based Cognitive Decline Detection 
+This project analyzes voice recordings to detect early signs of cognitive stress or decline using a combination of audio processing, natural language features, and anomaly detection using unsupervised learning models.
 
 Overview
 Audio samples were simulated using Bark.ai to reflect realistic speech patterns under varying cognitive loads. Each .wav file is processed to extract both acoustic and linguistic features relevant to cognitive health.
 Code used to generate samples using bark.ai:https://colab.research.google.com/drive/1i2SlgdYCbMpRiSnDXWpumkz2E17mxwpq?usp=sharing
+
 Other audio samples used can be accessed through:https://drive.google.com/drive/folders/1IM6eCvccYgeXdu3-8hf9WezuFUpwdwnc?usp=sharing
 Key Libraries Used:
 librosa – audio analysis
