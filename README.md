@@ -4,7 +4,7 @@ This project analyzes voice recordings to detect early signs of cognitive stress
 
 **Overview**
 
-Audio samples were simulated using Bark.ai to reflect realistic speech patterns under different cognitive loads.
+Audio samples were simulated using Bark.ai or recorded under a simulated environment.
 
 Code to generate samples using Bark.ai:  
 https://colab.research.google.com/drive/1i2SlgdYCbMpRiSnDXWpumkz2E17mxwpq?usp=sharing
