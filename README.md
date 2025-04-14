@@ -1,6 +1,6 @@
 **Voice-Based Cognitive Decline Detection**
 
-This project analyzes voice recordings to detect early signs of cognitive stress or decline using audio processing, natural language features, and simple anomaly detection models.
+This project analyzes voice recordings to detect early signs of cognitive stress or decline by detecting signs of speech impairment using audio processing,  language features, and simple anomaly detection models.
 
 **Overview**
 
