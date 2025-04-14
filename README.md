@@ -1,41 +1,44 @@
- Voice-Based Cognitive Decline Detection 
-This project analyzes voice recordings to detect early signs of cognitive stress or decline using a combination of audio processing, natural language features, and anomaly detection using unsupervised learning models.
+**Voice-Based Cognitive Decline Detection**
 
-Overview
-Audio samples were simulated using Bark.ai to reflect realistic speech patterns under varying cognitive loads. Each .wav file is processed to extract both acoustic and linguistic features relevant to cognitive health.
-Code used to generate samples using bark.ai:https://colab.research.google.com/drive/1i2SlgdYCbMpRiSnDXWpumkz2E17mxwpq?usp=sharing
+This project analyzes voice recordings to detect early signs of cognitive stress or decline using audio processing, natural language features, and simple anomaly detection models.
 
-Other audio samples used can be accessed through:https://drive.google.com/drive/folders/1IM6eCvccYgeXdu3-8hf9WezuFUpwdwnc?usp=sharing
-Key Libraries Used:
-librosa – audio analysis
-whisper – speech-to-text transcription
-sklearn – ML models (SVM, Isolation Forest, Decision Tree)
-matplotlib, pandas, numpy, re – visualization and processing
+**Overview**
 
-Feature Extraction
-Audio-based: MFCC, RMS, pitch variability, spectral features
+Audio samples were simulated using Bark.ai to reflect realistic speech patterns under different cognitive loads.
 
-Text-based: filler word count, repeated words, pause frequency, speech rate
+Code to generate samples using Bark.ai:  
+https://colab.research.google.com/drive/1i2SlgdYCbMpRiSnDXWpumkz2E17mxwpq?usp=sharing
 
-Transcription is performed using OpenAI Whisper
+Other sample audios used:  
+https://drive.google.com/drive/folders/1IM6eCvccYgeXdu3-8hf9WezuFUpwdwnc?usp=sharing
 
-Machine Learning Approaches
-1. Rule-Based Scoring
-Flags known risk signals (e.g., >3 fillers, slow speech rate)
-Simple, interpretable baseline
+Each .wav file is processed to extract both audio and text features.
 
-2. One-Class SVM
-Detects outliers in feature space
-Ideal for small, unlabeled datasets
+**Key Libraries Used**
 
-3. Isolation Forest
-Randomly isolates anomalies
-Fast and effective for high-dimensional data
+librosa - for audio feature extraction  
+whisper - for transcription  
+sklearn - for ML models like SVM, Isolation Forest, and Decision Tree  
+matplotlib, pandas, numpy, re - for data handling and visualization
 
-4. Decision Tree Classifier
-Supervised model trained on basic anomaly labels
-Transparent decision logic
+**Feature Extraction**
 
-Final Verdict
-Each model contributes to a combined score. A sample is flagged if 2 or more models (including the rule-based score) identify it as risky.The final verdicts of all files are plotted based on the risk score.
+Audio features: MFCC, RMS, pitch variability, spectral features  
+Text features: filler word count, repeated words, pause detection, speech rate  
+Transcription is done using OpenAI Whisper
+
+**Machine Learning Approaches**
+
+Rule-Based Scoring - Flags samples with too many fillers or slow speech  
+One-Class SVM - Finds outliers in audio and text features  
+Isolation Forest - Efficient for detecting anomalies in feature data  
+Decision Tree - Simple classifier trained on labeled anomaly scores
+
+**Final Verdict**
+
+Each method votes on whether a file is at risk.  
+If 2 or more methods (including rule-based) detect risk, the file is flagged.  
+Final risk scores are visualized in a bar chart for all files.
+
+
 
