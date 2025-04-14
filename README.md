@@ -1,54 +1,40 @@
-# Audio Anomaly Detection (Speech Analysis Tool)
+MemoTag: Voice-Based Cognitive Decline Detection (Proof of Concept)
+This project analyzes voice recordings to detect early signs of cognitive stress or decline using a combination of audio processing, natural language features, and anomaly detection models.
 
-This is a simple Python tool that analyzes `.wav` audio files to detect unusual or inconsistent speech patterns. It combines audio signal features with speech transcription using OpenAI’s Whisper model and some basic machine learning.
+Overview
+Audio samples were simulated using Bark.ai to reflect realistic speech patterns under varying cognitive loads. Each .wav file is processed to extract both acoustic and linguistic features relevant to cognitive health.
+Code used to generate samples using bark.ai:https://colab.research.google.com/drive/1i2SlgdYCbMpRiSnDXWpumkz2E17mxwpq?usp=sharing
+Other audio samples used can be accessed through:https://drive.google.com/drive/folders/1IM6eCvccYgeXdu3-8hf9WezuFUpwdwnc?usp=sharing
+Key Libraries Used:
+librosa – audio analysis
+whisper – speech-to-text transcription
+sklearn – ML models (SVM, Isolation Forest, Decision Tree)
+matplotlib, pandas, numpy, re – visualization and processing
 
-The audio files used are **user-generated or simulated samples** for testing purposes.
+Feature Extraction
+Audio-based: MFCC, RMS, pitch variability, spectral features
 
----
+Text-based: filler word count, repeated words, pause frequency, speech rate
 
-## 💡 What It Does
+Transcription is performed using OpenAI Whisper
 
-For each audio file you provide, the script:
+Machine Learning Approaches
+1. Rule-Based Scoring
+Flags known risk signals (e.g., >3 fillers, slow speech rate)
+Simple, interpretable baseline
 
-- Loads the audio and displays the waveform
-- Transcribes the speech using OpenAI's Whisper
-- Detects:
-  - Filler words like "um", "uh", "like", etc.
-  - Repetitions of words
-  - Long pauses in speech
-- Extracts audio features like:
-  - Pitch and pitch variability
-  - MFCCs (mel-frequency cepstral coefficients)
-  - Spectral features (centroid, rolloff, bandwidth, contrast)
-  - Zero Crossing Rate
-- Calculates a manual anomaly score
-- Uses 3 machine learning models to detect anomalies:
-  - One-Class SVM
-  - Isolation Forest
-  - Decision Tree
-- Averages all scores and flags files as `Normal` or `Anomalous`
-- Shows a **final plot** to visualize the verdict
+2. One-Class SVM
+Detects outliers in feature space
+Ideal for small, unlabeled datasets
 
----
+3. Isolation Forest
+Randomly isolates anomalies
+Fast and effective for high-dimensional data
 
-## Libraries Used
+4. Decision Tree Classifier
+Supervised model trained on basic anomaly labels
+Transparent decision logic
 
-- `librosa` – audio processing and feature extraction
-- `matplotlib` – for plotting waveforms and final verdict
-- `whisper` – OpenAI’s model for speech-to-text
-- `pandas`, `numpy` – for handling data
-- `scikit-learn` – for ML models (SVM, IsolationForest, DecisionTree)
-- `re`, `collections` – for text pattern matching and counting
-
----
-
-##  How to Run
-
-### 1. Install required libraries:
-
-```bash
-pip install openai-whisper librosa matplotlib pandas scikit-learn
-run script-> python detect_audio_anomalies.py
-enter file path on prompt->Enter paths to audio files (comma-separated): ./audio/sample1.wav, ./audio/sample2.wav
-
+Final Verdict
+Each model contributes to a combined score. A sample is flagged if 2 or more models (including the rule-based score) identify it as risky.The final verdicts of all files are plotted based on the risk score.
 
